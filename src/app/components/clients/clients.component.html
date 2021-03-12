@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <button (click)="getAllClients()" class="btn btn-outline-info ml-2">
+        All
+      </button>
+    </li>
+    <li>
+      <button (click)="getActiveClients()" class="btn btn-outline-info ml-2">
+        Active
+      </button>
+    </li>
+    <li>
+      <button routerLink="/addClient" class="btn btn-outline-info ml-2">
+        New
+      </button>
+    </li>
+    <li>
+      <button routerLink="/testGrid" class="btn btn-outline-info ml-2">
+        Grid
+      </button>
+    </li>
+  </ul>
+  <ul class="navbar navbar-nav ml-auto">
+    <li>
+      <form #f="ngForm" class="form-inline" (ngSubmit)="onSearch(f.value)">
+        <div class="form-group">
+          <input ngModel class="form-check-input form-control" name="keyWord" type="text" />
+          <button class="btn btn-sm btn-info ml-2">Search</button>
+        </div>
+      </form>
+    </li>
+  </ul>
+</nav>
+<div class="container" *ngIf="clients">
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>NAME</th>
+      <th>EMAIL</th>
+      <th>SOLDE</th>
+      <th>BIRTHDAY</th>
+      <th>STATE</th>
+
+
+
+    </tr>
+    <tr *ngFor="let client of clients">
+      <td>{{ client.id }}</td>
+      <td>{{ client.name }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.solde  | currency:'EUR'  }}</td>
+      <td>{{ client.birthday | date:'dd/MM/yyyy' }}</td>
+
+      <td>
+        <button (click)="changeClientActive(client)" class="btn btn-sm ml-2"
+          [ngClass]="client.active ? 'btn-success' : 'btn-secondary'">
+          <Span *ngIf="client.active">Active</Span>
+          <Span *ngIf="!client.active">Not Active</Span>
+        </button>
+      </td>
+      <td>
+        <button (click)="deleteClient(client)" class="btn-danger btn btn-sm btn-info ml-2">
+          Delete
+        </button>
+      </td>
+      <td>
+        <button (click)="editClient(client)" class="btn-info btn btn-sm btn-info ml-2">
+          Edit
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>

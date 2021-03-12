@@ -1,0 +1,36 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "name": "Jean",
+      "email": "jean@gmail.com",
+      "solde": 133.1090000121,
+      "active": false,
+      "birthday": "6-09-2012"
+    },
+    {
+      "id": 2,
+      "name": "Ben",
+      "email": "Ben@gmail.com",
+      "solde": 322.33333331,
+      "active": true,
+      "birthday": "09-12-1987"
+    },
+    {
+      "id": 3,
+      "name": "Marc",
+      "email": "Marc@gmail.com",
+      "solde": 1.32222222222,
+      "active": true,
+      "birthday": "09-12-1991"
+    },
+    {
+      "id": 4,
+      "name": "Luis",
+      "email": "Luis@gmail.com",
+      "solde": 121.5010012211,
+      "active": true,
+      "birthday": "09-12-2002"
+    }
+  ]
+}

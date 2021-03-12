@@ -1,0 +1,43 @@
+<div class="container" *ngIf="clientForm">
+
+  <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-6">
+        <input formControlName="name" [ngClass]="{'is-invalid':submitted && clientForm.controls.name.errors}"
+               type="text" class="form-control" id="name" placeholder="Name">
+      </div>
+    </div>
+    <div *ngIf="submitted && clientForm.controls.name.errors" class="invalid-feedback">
+      <div *ngIf="clientForm.controls.name.errors.required">required field</div>
+    </div>
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-6">
+        <input formControlName="email" type="email" class="form-control" id="email" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="solde" class="col-sm-2 col-form-label">Solde</label>
+      <div class="col-sm-6">
+        <input formControlName="solde" type="text" class="form-control" id="solde" placeholder="Solde">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="birthday" class="col-sm-2 col-form-label">Birthday</label>
+      <div class="col-sm-6">
+        <input formControlName="birthday" type="text" class="form-control" id="birthday" placeholder="Birthday">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="active" class="col-sm-2 col-form-label">Active</label>
+      <input formControlName="active" type="checkbox" id="active" class="form-check" checked>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button class="btn btn-primary " routerLink="/clients">Back</button>
+        <button  type="submit" class="btn btn-primary ml-4">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
