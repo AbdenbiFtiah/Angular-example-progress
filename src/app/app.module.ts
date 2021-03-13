@@ -10,6 +10,7 @@ import { FormClientComponent } from './components/form-client/form-client.compon
 import { EditClientComponent } from './components/edit-client/edit-client.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { TestGridComponent } from './components/test-grid/test-grid.component';
+import 'ag-grid-enterprise';
 
 
 @NgModule({

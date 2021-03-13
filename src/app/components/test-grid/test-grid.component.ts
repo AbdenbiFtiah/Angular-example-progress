@@ -7,7 +7,7 @@ import { ClientService } from 'src/app/services/client.service';
 @Component({
   selector: 'app-test-grid',
   templateUrl: './test-grid.component.html',
-  styleUrls: ['./test-grid.component.css'],
+  styleUrls: ['./test-grid.component.scss'],
 })
 export class TestGridComponent implements OnInit {
   constructor(private clientService: ClientService) {}
@@ -17,15 +17,25 @@ export class TestGridComponent implements OnInit {
   agGrid: AgGridAngular;
 
   client: Client;
+  defaultColDef = {
+    sortable: true,
+    filter: true
+  };
   columnDefs = [
-    { field: 'id', sortable: true, filter: true },
-    { field: 'name', sortable: true, filter: true, checkboxSelection: true },
-    { field: 'email', sortable: true, filter: true },
-    { field: 'solde', sortable: true, filter: true },
-    { field: 'birthday', sortable: true, filter: true },
-    { field: 'active', sortable: true, filter: true },
-
-  ];
+    { field: 'name' },
+    { field: 'solde'},
+    { field: 'email'},
+    { field: 'birthday'},
+    { field: 'active',rowGroup: true },
+   ];
+  autoGroupColumnDef = {
+    headerName: 'ID',
+    field: 'id',
+    cellRenderer: 'agGroupCellRenderer',
+    cellRendererParams: {
+        checkbox: true
+    }
+};
 
   rowData: any[];
 
@@ -37,18 +47,17 @@ export class TestGridComponent implements OnInit {
   }
   getSelectedRows(){
     const selectedNodes = this.agGrid.api.getSelectedNodes();
-    console.log(selectedNodes);
 
         const selectedData = selectedNodes.map(node => node.data );
         const selectedDataStringPresentation = selectedData.map(node => `${node.name} ${node.solde}`).join(', ');
 
-        // alert(`Selected nodes: ${selectedDataStringPresentation}`);
+        alert(`Selected nodes: ${selectedDataStringPresentation}`);
 
   }
-  deleteSelectedRows(){
+  deleteSelectedRow(){
     const selectedRow = this.agGrid.api.getSelectedNodes();
-    selectedRow.map(node => this.client=node.data );
-    this.clientService.deleteClient(this.client).subscribe(data=>{
+    this.client=selectedRow[0].data;
+    this.clientService.deleteClient(this.client).subscribe(()=>{
        this.ngOnInit();
      });
   }

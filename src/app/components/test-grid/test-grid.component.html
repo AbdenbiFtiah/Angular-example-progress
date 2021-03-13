@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
       <button class="btn btn-info" (click)="getSelectedRows()">Get Selected Rows</button>
-      <button class="btn btn-danger ml-4" (click)="deleteSelectedRows()">Delete Selected Row</button>
+      <button class="btn btn-danger ml-4" (click)="deleteSelectedRow()">Delete Selected Row</button>
   </div>
   <br>
   <ag-grid-angular style="width: 1100px; height: 500px" class="ag-theme-alpine"
     [rowData]="rowData"
     [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [autoGroupColumnDef]="autoGroupColumnDef"
     rowSelection="multiple"
     #agGrid >
   </ag-grid-angular>

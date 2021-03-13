@@ -6,7 +6,7 @@ import { ClientService } from 'src/app/services/client.service';
 @Component({
   selector: 'app-form-client',
   templateUrl: './form-client.component.html',
-  styleUrls: ['./form-client.component.css']
+  styleUrls: ['./form-client.component.scss']
 })
 export class FormClientComponent implements OnInit {
 
